@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup/Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form {
+            display: none;
+        }
+        .form.active {
+            display: block;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 10px;
+            text-align: center;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Signup Form -->
+        <div id="signup-form" class="form active">
+            <h2>Signup</h2>
+            <form id="signup" action="php/signup.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="fname" placeholder="First Name" required>
+                <input type="text" name="lname" placeholder="Last Name" required>
+                <input type="text" name="username" placeholder="User Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Continue with Chat</button>
+                <p>Already have an account? <a href="#" onclick="toggleForms()">Login</a></p>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form">
+            <h2>Login</h2>
+            <form id="login" action="php/login.php" method="post">
+                <input type="text" name="username" placeholder="username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Continue with Chat</button>
+                <p>Don't have an account? <a href="#" onclick="toggleForms()">Signup</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function toggleForms() {
+            document.getElementById('signup-form').classList.toggle('active');
+            document.getElementById('login-form').classList.toggle('active');
+        }
+    </script>
+</body>
